@@ -1,0 +1,22 @@
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+import time
+
+
+driver=webdriver.Firefox()
+driver.get('https://web.whatsapp.com/')
+
+names = ['name1' , 'name2']
+messages = input('Enter msg:')
+meany = int(input('how meany?'))
+input('Enter:')
+for name in names:
+    user=driver.find_element(By.XPATH , '//span[@title="{}"]'.format(name))
+    user.click()
+    msg_box=driver.find_element(By.CLASS_NAME , 'fd365im1')
+    for i in range(meany):
+        msg_box.send_keys(msg)
+        time.sleep(3)
+        msg_box.send_keys(Keys.ENTER)
